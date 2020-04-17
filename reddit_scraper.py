@@ -33,14 +33,14 @@ class RedditScraper():
             "score":[],
             "id":[], "url":[],
             "comms_num": [],
-            "created_at": [],
+            "time": [],
             "body":[]
             }
 
         # for every submission retrieve and append post attributes to dictionary
         for submission in subreddit.top('day', limit=12):
             topics_dict["id"].append(submission.id)
-            topics_dict["created_at"].append(submission.created_utc)
+            topics_dict["time"].append(submission.created_utc)
             topics_dict["score"].append(submission.score)
             topics_dict["url"].append(submission.url)
             topics_dict["comms_num"].append(submission.num_comments)

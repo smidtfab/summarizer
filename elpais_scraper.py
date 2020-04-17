@@ -32,6 +32,7 @@ class ElPaisScraper():
         news_contents = []
         list_links = []
         list_titles = []
+        list_time = []
 
         for n in np.arange(0, number_of_articles):
             
@@ -43,7 +44,7 @@ class ElPaisScraper():
             # Getting the title
             title = self.coverpage_news[n].find('a').get_text()
             list_titles.append(title)
-            print(title)
+            print(title)            
             
             # Reading the content (it is divided in paragraphs)
             article = requests.get(link)
@@ -51,6 +52,11 @@ class ElPaisScraper():
             soup_article = BeautifulSoup(article_content, 'html5lib')
             body = soup_article.select('div[class*="a_b article_body"]')
             x = body[0].find_all('p')
+
+            # get published time of article
+            timestamp = soup_article.find('a', class_='a_ti').get_text()
+            list_time.append(timestamp)
+            print(timestamp)
             
             # Unifying the paragraphs
             list_paragraphs = []
@@ -64,6 +70,7 @@ class ElPaisScraper():
         # df_show_info
         articles = pd.DataFrame({
             'link': list_links,
+            'time': list_time,
             'title': list_titles,
             'body': news_contents 
             })
