@@ -25,7 +25,7 @@ class ElPaisScraper():
 
         # News identification
         self.coverpage_news = soup1.find_all('h2', class_='headline')
-        print('Number of articles found on cover page: {}'.format(len(self.coverpage_news)))
+        print('Number of articles found on cover page: {}\n'.format(len(self.coverpage_news)))
 
     def scrape_elpais(self, number_of_articles = 5):
         # Empty lists for content, links and titles

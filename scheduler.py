@@ -4,7 +4,6 @@ import sys
 
 class Scheduler:
 
-    ''' TODO: Set up timestamp'''
     def __init__(self):
         pass
 
