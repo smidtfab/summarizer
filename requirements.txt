@@ -3,3 +3,4 @@ BeautifulSoup4
 nltk
 matplotlib
 schedule
+praw
