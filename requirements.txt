@@ -4,3 +4,4 @@ nltk
 matplotlib
 schedule
 praw
+html5lib
