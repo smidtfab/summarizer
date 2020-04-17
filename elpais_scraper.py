@@ -39,12 +39,12 @@ class ElPaisScraper():
             # Getting the link of the article
             link = 'https://english.elpais.com' + self.coverpage_news[n].find('a')['href']
             list_links.append(link)
-            print(link)
             
             # Getting the title
             title = self.coverpage_news[n].find('a').get_text()
             list_titles.append(title)
-            print(title)            
+            print('Link for article number {}: {}'.format(n,link))
+            print('Title: {}'.format(title))
             
             # Reading the content (it is divided in paragraphs)
             article = requests.get(link)
@@ -56,7 +56,8 @@ class ElPaisScraper():
             # get published time of article
             timestamp = soup_article.find('a', class_='a_ti').get_text()
             list_time.append(timestamp)
-            print(timestamp)
+            print('Published on: {}'.format(timestamp))
+            print('')
             
             # Unifying the paragraphs
             list_paragraphs = []
